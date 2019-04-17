@@ -2,6 +2,8 @@ package pack1;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -13,7 +15,9 @@ import javax.swing.JPanel;
 
 
 
-public class Feu_Rouge extends JPanel  implements Etat_circulation {
+public class Feu_Rouge extends JPanel  implements Etat_circulation, ActionListener {
+    JButton b= new JButton("Changer");
+    
     
         /**
      * 
@@ -25,7 +29,10 @@ public class Feu_Rouge extends JPanel  implements Etat_circulation {
             Feu_Rouge S= new Feu_Rouge();
             S.circuler();
         }
-
+        public void actionPerformed(ActionEvent arg0) {    
+            Etat_circulation A= new Feu_Jaune(); 
+             A.circuler();
+         }
     @Override
     public void circuler() {
         // TODO Auto-generated method stub
@@ -40,7 +47,8 @@ public class Feu_Rouge extends JPanel  implements Etat_circulation {
         B.setTitle("Ma premiere fenetre en java");
          B.setSize(500,550);
         B.setLocationRelativeTo(null);
-       p.add(new JButton("Mon Bouton"));
+        b.addActionListener(this);
+       p.add(b);
         B.setContentPane(p);
         B.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         B.setVisible(true);

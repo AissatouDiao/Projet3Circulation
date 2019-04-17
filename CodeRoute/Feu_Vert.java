@@ -16,9 +16,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
-public class Feu_Vert  extends JFrame implements Etat_circulation {
+public class Feu_Vert  extends JFrame implements Etat_circulation, ActionListener {
     
-   
+    JButton b= new JButton("Changer");
    
    /**
      * 
@@ -31,6 +31,10 @@ public static void main(String[] args) {
      // Feu_Jaune Z= new Feu_Jaune();
        
     }
+public void actionPerformed(ActionEvent arg0) {     
+    Etat_circulation A= new Feu_Rouge(); 
+     A.circuler();
+ }
   
     public void circuler() {
         // TODO Auto-generated method stub
@@ -38,7 +42,7 @@ public static void main(String[] args) {
         JPanel p= new JPanel();
         ImageIcon icon = new ImageIcon("F3.PNG");;
         JLabel image= new JLabel(icon);
-        JButton bouton=new JButton("Mon bouton");
+        
         //BufferedImage myPicture = null;
        
         p.add(image);
@@ -46,7 +50,8 @@ public static void main(String[] args) {
         B.setTitle("Ma premiere fenetre en java");
          B.setSize(500,550);
         B.setLocationRelativeTo(null);
-       p.add(bouton);
+        b.addActionListener(this);
+       p.add(b);
        
         B.setContentPane(p);
        
